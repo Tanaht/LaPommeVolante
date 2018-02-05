@@ -1,2 +1,8 @@
 
+drone/\.idea/
+
+server/Pomiculteur/\node_modules/
+server/Pomiculteur/\.idea/
+
+
 \.idea/
