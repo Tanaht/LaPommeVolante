@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DroneMissions</string>
+    <string name="btn_NewMission">New Mission</string>
+    <string name="btn_OldMissions">Old Missions</string>
 </resources>
