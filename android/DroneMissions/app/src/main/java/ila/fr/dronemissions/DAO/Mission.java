@@ -9,9 +9,13 @@ public class Mission {
     private String title;
     private String type;
     private Trajectory trajectory;
-
-
     // TODO: Add mission report
+
+    public Mission(String title, String type, Trajectory trajectory){
+        this.title = title;
+        this.type = type;
+        this.trajectory = trajectory;
+    }
 
     public String getTitle() {
         return title;
@@ -27,5 +31,13 @@ public class Mission {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Trajectory getTrajectory() {
+        return trajectory;
+    }
+
+    public void setTrajectory(Trajectory trajectory) {
+        this.trajectory = trajectory;
     }
 }
