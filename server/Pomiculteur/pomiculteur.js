@@ -6,7 +6,11 @@ var mongoose = require('mongoose');
 var portApiRest = 8080;
 var portSocket = 5000;
 
+
 var Tasks = require("./api/models/todoListModel.js");
+var pomDAPIController = require('./api/controllers/PomdAPIController.js');
+
+
 var routes = require('./api/routes/todoListRoutes'); //importing route
 
 routes(app); //register the route
@@ -15,17 +19,14 @@ mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/LePommier');
 
 
-
-var serverSocket = net.createServer(function (socket) {
-    console.log("new client connected to the socket");
-
+net.createServer(function (socket) {
+    pomDAPIController.onClientConnected(socket);
     socket.on('data', function (data) {
-        console.log("new data from client : "+data);
-        socket.write("ok"+data);
+        pomDAPIController.onClientSendData(socket,data);
     });
 
     socket.on('end', function () {
-        console.log("client disconected");
+        pomDAPIController.onClientDisconnect(socket);
     });
 
 }).listen(portSocket);
