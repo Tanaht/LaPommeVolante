@@ -42,4 +42,6 @@ class Subject:
         :param observer:
         :return: void
         """
+        if not isinstance(Observer, observer):
+            raise InstanciationException(observer, Observer)
         observer.update(self)
