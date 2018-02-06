@@ -5,21 +5,21 @@ package ila.fr.dronemissions.DAO;
  */
 
 public class Point {
-    private int longitude;
-    private int latitude;
+    private double longitude;
+    private double latitude;
     private boolean picture;
 
-    public Point(int longitude, int latitude,boolean picture){
+    public Point(double longitude, double latitude,boolean picture){
         this.longitude = longitude;
         this.latitude = latitude;
         this.picture = picture;
     }
 
-    public int getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public int getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
@@ -27,11 +27,11 @@ public class Point {
         return picture;
     }
 
-    public void setLongitude(int longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
-    public void setLatitude(int latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
