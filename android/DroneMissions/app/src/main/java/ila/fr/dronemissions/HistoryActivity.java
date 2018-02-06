@@ -1,12 +1,16 @@
 package ila.fr.dronemissions;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -72,7 +76,17 @@ public class HistoryActivity extends AppCompatActivity {
                 android.R.layout.simple_list_item_2,
                 new String[] {"title", "type"},
                 new int[] {android.R.id.text1,
-                        android.R.id.text2});
+                        android.R.id.text2}){
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                TextView text1 = (TextView) view.findViewById(android.R.id.text1);
+                TextView text2 = (TextView) view.findViewById(android.R.id.text2);
+                text1.setTextColor(Color.parseColor("#234A7A"));
+                text1.setTypeface(null, Typeface.BOLD_ITALIC);
+                text2.setTextColor(Color.parseColor("#5dc305"));
+                return view;
+            };
+        };
         return adapter;
     }
 }
