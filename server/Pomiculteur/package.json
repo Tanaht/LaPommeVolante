@@ -4,12 +4,14 @@
   "description": "m",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node pomiculteur.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.2",
-    "mongoose": "^5.0.3"
+    "mongoose": "^5.0.3",
+    "socket.io": "^2.0.4"
   }
 }

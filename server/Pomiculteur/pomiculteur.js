@@ -1,8 +1,11 @@
-var express = require('express'),
-    app = express(),
-    Task = require('./api/models/todoListModel'), //created model loading here
-    mongoose = require('mongoose'),
-    port = 8080;
+var express = require('express');
+var app = express();
+var Task = require('./api/models/todoListModel'); //created model loading here
+var mongoose = require('mongoose');
+var port = 8080;
+
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
 var routes = require('./api/routes/todoListRoutes'); //importing route
 routes(app); //register the route
