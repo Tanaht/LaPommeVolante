@@ -1,5 +1,6 @@
 package ila.fr.dronemissions;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,18 +22,18 @@ public class MainActivity extends AppCompatActivity {
         btn_NewMission.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                //TODO
-
+                Intent intent = new Intent( MainActivity.this,
+                        NewMissionActivity.class);
+                startActivity(intent);
             }
         });
 
         btn_OldMissions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                //TODO
-                
+                Intent intent = new Intent( MainActivity.this,
+                        HistoryActivity.class);
+                startActivity(intent);
             }
         });
     }
