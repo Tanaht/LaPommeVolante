@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".NewMissionActivity" />
-        <activity android:name=".HistoryActivity"></activity>
+        <activity android:name=".HistoryActivity" />
+        <activity android:name=".MissionReportActivity"></activity>
     </application>
 
 </manifest>
