@@ -3,18 +3,15 @@
 var mongoose = require('mongoose'),
     Task = mongoose.model('Tasks');
 
-exports.list_all_tasks = function(req, res) {
-    Task.find({}, function(err, task) {
-        if (err)
-            res.send(err);
-        res.json(task);
-    });
+exports.onClientConnected = function(socketClient) {
+    console.log("new client connected to the socket");
 };
 
-exports.test = function(req, res) {
-    res.send("test");
+exports.onClientSendData = function (socketClient, data) {
+    console.log("new data from client : " + data);
+    socketClient.write("ok " + data);
 };
 
-exports.testParam = function(req, res) {
-    res.send("test "+req.params.param);
+exports.onClientDisconnect = function (socketClient) {
+    console.log("client disconected");
 };
