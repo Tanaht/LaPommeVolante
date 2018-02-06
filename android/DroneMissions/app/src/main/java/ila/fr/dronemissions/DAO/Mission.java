@@ -1,5 +1,7 @@
 package ila.fr.dronemissions.DAO;
 
+import java.util.List;
+
 /**
  * Created by aminesoumiaa on 06/02/18.
  */
@@ -8,10 +10,10 @@ public class Mission {
 
     private String title;
     private String type;
-    private Trajectory trajectory;
+    private List<Point> trajectory;
     // TODO: Add mission report
 
-    public Mission(String title, String type, Trajectory trajectory){
+    public Mission(String title, String type, List<Point> trajectory){
         this.title = title;
         this.type = type;
         this.trajectory = trajectory;
@@ -33,11 +35,11 @@ public class Mission {
         this.type = type;
     }
 
-    public Trajectory getTrajectory() {
+    public List<Point> getTrajectory() {
         return trajectory;
     }
 
-    public void setTrajectory(Trajectory trajectory) {
+    public void setTrajectory(List<Point> trajectory) {
         this.trajectory = trajectory;
     }
 }
