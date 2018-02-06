@@ -1,21 +1,22 @@
 package ila.fr.dronemissions.DAO;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by aminesoumiaa on 06/02/18.
  */
 
-public class Mission {
+public class Mission implements Serializable {
 
     private String title;
-    private String type;
+    private String status;
     private List<Point> trajectory;
     // TODO: Add mission report
 
-    public Mission(String title, String type, List<Point> trajectory){
+    public Mission(String title, String status, List<Point> trajectory){
         this.title = title;
-        this.type = type;
+        this.status = status;
         this.trajectory = trajectory;
     }
 
@@ -23,16 +24,16 @@ public class Mission {
         return title;
     }
 
-    public String getType() {
-        return type;
+    public String getStatus() {
+        return status;
     }
 
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public List<Point> getTrajectory() {
