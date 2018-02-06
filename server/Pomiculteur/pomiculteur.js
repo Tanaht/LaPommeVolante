@@ -1,11 +1,14 @@
 var express = require('express');
 var app = express();
-var Task = require('./api/models/todoListModel'); //created model loading here
 var mongoose = require('mongoose');
 var port = 8080;
 
+var Tasks = require("./api/models/todoListModel.js");
+
 var http = require('http').Server(app);
-var io = require('socket.io')(http);
+
+var net = require('net');
+
 
 var routes = require('./api/routes/todoListRoutes'); //importing route
 routes(app); //register the route
@@ -14,6 +17,10 @@ mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/LePommier');
 
 
+var serverSocket = net.createServer(function (socket) {
+    socket.write("Welcome \n");
+
+}).listen(5000);
 
 
 
