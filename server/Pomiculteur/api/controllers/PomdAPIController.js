@@ -1,17 +1,19 @@
 'use strict';
 
-var mongoose = require('mongoose'),
-    Task = mongoose.model('Tasks');
+var mongoose = require('mongoose')
+var Task = mongoose.model('Tasks');
+var socketPomdAPI = null;
 
 exports.onClientConnected = function(socketClient) {
-    console.log("new client connected to the socket");
+    console.info("new client connected to the socket");
+    socketPomdAPI = socketClient;
 };
 
 exports.onClientSendData = function (socketClient, data) {
-    console.log("new data from client : " + data);
+    console.info("new data from client : " + data);
     socketClient.write("ok " + data);
 };
 
-exports.onClientDisconnect = function (socketClient) {
-    console.log("client disconected");
+exports.onClientDisconnected = function (socketClient) {
+    console.info("client disconnected");
 };
