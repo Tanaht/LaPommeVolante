@@ -1,0 +1,66 @@
+//.____                                                                .__                 __          
+//|    |   _____    ______   ____   _____   _____   ____   ___  ______ |  | _____    _____/  |_  ____  
+//|    |   \__  \   \____ \ /  _ \ /     \ /     \_/ __ \  \  \/ /  _ \|  | \__  \  /    \   __\/ __ \ 
+//|    |___ / __ \_ |  |_> >  <_> )  Y Y  \  Y Y  \  ___/   \   (  <_> )  |__/ __ \|   |  \  | \  ___/ 
+//|_______ (____  / |   __/ \____/|__|_|  /__|_|  /\___  >   \_/ \____/|____(____  /___|  /__|  \___  >
+//        \/    \/  |__|                \/      \/     \/                        \/     \/          \/ 
+
+
+//Specification de la BDD 
+
+//Nous utilisons pour le projet "la pomme volante" le service de BDD Mongodb
+
+//La Bdd contient deux collection représentant l'ensemble des données d'une mission.
+
+//Les champs d'une collection mission sont : 
+// TITRE : titre de la mission (string)
+// ID : id de la mission (int)
+// DATE : date de la mission (date)
+// TRAJECTORY : la liste des points d'obervation représenter par :
+			//LAT : Latitude (float)
+			//LONG : Longitude (float)
+			//ALT : Altitude (float)
+			//PHOTO : la prise de photo ou non (Boolean)
+
+//Mission 
+{
+	'titre' : String,
+	'id' : int,
+	'date' : string,
+	'trajectory' : [
+		{
+			'lat' : float,
+			'long' : float,
+			'alt' : float,
+			'photo' : Boolean
+		}
+
+	]
+
+}
+
+//Les champs d'une collection CR sont :
+//ID : L'id du compte rendu (int)
+//MISSION : L'id de la mission concerné (int)
+//ERREUR : La description de l'erreur (String)
+//PHOTO : Une liste de photo représenter par : 
+			//LAT : Latitude (float)
+			//LONG : Longitude (float)
+			//ALT : Altitude (float)
+			//DATA : le chemin url de la photo (String)
+
+//CR
+{
+	'id' : int,
+	'mission' : int,
+	'status' : Boolean,
+	'erreur' : String,
+	'photo' : [
+		{
+			'lat' : float,
+			'long' : float,
+			'alt' : float,
+			'data' : String		
+		}
+	]
+}
