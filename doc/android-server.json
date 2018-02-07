@@ -1,0 +1,37 @@
+/*
+ * Messages à deux champs :
+ *  - 'type' : le type de message, symbolise la requête/réponse envoyée
+ *  - 'data' : le contenu du message
+ */
+
+/****************************************************
+ * Messages de l'appareil Android vers le serveur
+ ****************************************************/
+
+// Ordre de mission
+// POST /mission/order
+{
+  'type': 'mission_order',
+  'data': {
+    // PAS D'ID !!!!!!!!!1!!!
+    'title': string, // titre de la mission
+    'trajectory': [ // liste des points d'observation
+      {
+        'lat': float, // latitude
+        'lon': float, // longitude
+        'alt': float, // altitude
+        'photo': bool // prendre une photo ? true: oui; false: non
+      }
+    ]
+  }
+}
+
+/****************************************************
+ * Requêtes de l'appareil Android vers le serveur
+ ****************************************************/
+
+// GET /mission/list
+// reçoit un 'mission_list' en réponse
+
+// GET /report/{id}
+// reçoit un compte-rendu en réponse ou un { 'type': 'report' } sans data si le compte-rendu n'existe pas
