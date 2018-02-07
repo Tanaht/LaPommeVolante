@@ -9,9 +9,10 @@ class Main:
         droneFacade = DroneFacade()
 
         try:
-            serverFacade.addObserver(droneFacade)
             droneFacade.addObserver(serverFacade)
         except InstanciationException as e:
             print e
 
-        serverFacade.connect()
+        if not serverFacade.connect():
+            print "Unable to connect to server"
+            return
