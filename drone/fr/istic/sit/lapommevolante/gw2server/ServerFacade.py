@@ -9,8 +9,8 @@ class ServerFacade(Observer, Subject):
     def connect(self):
         """
         connect to remote server using a socket
-        
-        :return:
+        :return: boolean whether or not the GW is connected to the Server
+        TODO not implemented yet always return true
         """
-        pass
+        return True
 
