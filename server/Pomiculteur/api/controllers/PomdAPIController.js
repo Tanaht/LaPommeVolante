@@ -16,5 +16,8 @@ exports.onClientSendData = function (socketClient, data) {
 
 exports.onClientDisconnected = function (socketClient) {
     console.info("client disconnected");
-    socketClient.write("");
+};
+
+exports.onErrorOccure = function (err) {
+    console.error("Error, client disconnected when you try to send a message to it.\n"+err);
 };
