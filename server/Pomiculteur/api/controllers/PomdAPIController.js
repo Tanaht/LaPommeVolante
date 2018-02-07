@@ -16,4 +16,5 @@ exports.onClientSendData = function (socketClient, data) {
 
 exports.onClientDisconnected = function (socketClient) {
     console.info("client disconnected");
+    socketClient.write("");
 };

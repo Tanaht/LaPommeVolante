@@ -25,6 +25,11 @@ net.createServer(function (socket) {
         pomDAPIController.onClientDisconnected(socket);
     });
 
+    socket.on('error', function (err) {
+        console.error("Error, client disconnected when you try to send a message to it.");
+        console.error(err);
+    });
+
 }).listen(portSocket);
 
 
