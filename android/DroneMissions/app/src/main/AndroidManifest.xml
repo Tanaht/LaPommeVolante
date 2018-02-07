@@ -22,6 +22,11 @@
         <activity android:name=".NewMissionActivity" />
         <activity android:name=".HistoryActivity" />
         <activity android:name=".MissionReportActivity"></activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBHWcgldMdJmdmCb-HHxs_rUH7Hwas_bT8"/>
+        
     </application>
 
 </manifest>
