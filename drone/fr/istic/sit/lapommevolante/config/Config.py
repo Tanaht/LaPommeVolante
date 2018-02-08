@@ -4,6 +4,8 @@ class Config:
     def __init__(self):
         with open("config.yml", 'r') as stream:
             try:
-                self.config = yaml.load(stream)
+                self.document = yaml.load(stream)
+                self.socket_host = self.document["config"]["connection"]["socket"]["host"]
+                self.socket_port = self.document["config"]["connection"]["socket"]["port"]
             except yaml.YAMLError as exc:
                 print(exc)

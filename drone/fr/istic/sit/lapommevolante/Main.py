@@ -15,7 +15,7 @@ class Main:
         except InstanciationException as e:
             print e
 
-        if not serverFacade.connect():
+        if not serverFacade.connect(config.socket_host, config.socket_port):
             print "Unable to connect to server"
             return
 
