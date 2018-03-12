@@ -1,3 +1,5 @@
+import logging
+
 from fr.istic.sit.lapommevolante.config.Config import Config
 from fr.istic.sit.lapommevolante.exception.InstanciationException import InstanciationException
 from fr.istic.sit.lapommevolante.gw2drone.DroneFacade import DroneFacade
@@ -16,7 +18,7 @@ class Main:
             print e
 
         if not serverFacade.connect(config.socket_host, config.socket_port):
-            print "Unable to connect to server"
+            logging.error('Unable to connect to server')
             return
 
 

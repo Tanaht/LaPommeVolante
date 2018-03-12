@@ -1,7 +1,9 @@
+import logging
 import yaml
 
 class Config:
     def __init__(self):
+        logging.basicConfig(level=logging.INFO)
         with open("config.yml", 'r') as stream:
             try:
                 self.document = yaml.load(stream)

@@ -1,4 +1,10 @@
+import json
 import socket
+import threading
+from argparse import Namespace
+from pprint import pprint
+
+import logging
 
 from fr.istic.sit.lapommevolante.util.Observer import Observer
 
@@ -20,5 +26,16 @@ class ServerFacade(Observer):
         """
 
         self.sock.connect((host, port))
+
+        threading.Thread(target=self.receiveMission).start()
         return True
 
+    def receiveMission(self):
+        """
+        Here listen server and start mission according to received JSON
+        A concept of Queue could be used to put in queue missions when there is currently a mission being processed
+        :return:
+        """
+        jsonMission = json.loads(self.sock.recv(4096), object_hook=lambda d: Namespace(**d))
+        pprint(jsonMission)
+        logging.info('%s %s %s', jsonMission.type, jsonMission.data.title, jsonMission.data.trajectory[0].lat)
