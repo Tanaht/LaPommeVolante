@@ -11,4 +11,5 @@
     <string name="btn_Photo">Photo</string>
     <string name="btn_Supprimer" >Supprimer le dernier point</string>
     <string name="btn_Envoyer">Evoyer le trajet</string>
+    <string name="entrez_un_nom_de_mission">Entrez un nom de mission</string>
 </resources>
