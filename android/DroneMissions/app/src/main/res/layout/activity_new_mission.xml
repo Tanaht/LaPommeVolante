@@ -20,7 +20,7 @@
         android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="0dp"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
         <TextView
@@ -76,13 +76,13 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="784dp"
-        android:layout_height="820dp"
+        android:layout_height="611dp"
         android:layout_marginBottom="24dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        tools:layout_editor_absoluteX="8dp"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="8dp">
 
         <LinearLayout
             android:layout_width="464dp"
@@ -96,7 +96,7 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="224dp"> </fragment>
+                tools:layout_editor_absoluteY="224dp"></fragment>
         </LinearLayout>
 
         <LinearLayout
@@ -104,15 +104,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btn_Supprimer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?attr/colorError"
-                android:text="@string/btn_Supprimer"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="556dp"
-                tools:layout_editor_absoluteY="400dp" />
 
             <Button
                 android:id="@+id/btn_Photo"
@@ -122,7 +113,7 @@
                 android:text="@string/btn_Photo"
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="618dp"
-                tools:layout_editor_absoluteY="282dp" />
+                tools:layout_editor_absoluteY="400dp" />
 
             <Button
                 android:id="@+id/btn_Trajet"
@@ -133,6 +124,16 @@
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="610dp"
                 tools:layout_editor_absoluteY="495dp" />
+
+            <Button
+                android:id="@+id/btn_Supprimer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorError"
+                android:text="@string/btn_Supprimer"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="556dp"
+                tools:layout_editor_absoluteY="282dp" />
         </LinearLayout>
     </LinearLayout>
 
