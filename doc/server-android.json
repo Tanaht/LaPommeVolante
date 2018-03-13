@@ -1,0 +1,52 @@
+/*
+ * Messages à deux champs :
+ *  - 'type' : le type de message, symbolise la requête/réponse envoyée
+ *  - 'data' : le contenu du message
+ */
+
+/****************************************************
+ * Messages du serveur vers l'appareil Android
+ ****************************************************/
+
+// Compte-rendu
+{
+  'type': 'report',
+  'data': {
+    'id': int, // ID du compte-rendu
+    'mission': int, // ID de la mission
+    'status': bool, // réussite de la mission ? true: oui, false: non
+    'error': string, // message d'erreur si besoin ("" sinon)
+    'photos': [ // liste des photos
+      {
+        'lat': float, // latitude
+        'lon': float, // longitude
+        'alt': float, // altitude
+        'url': string // URL menant à la photo
+      }
+    ]
+  }
+}
+
+// Liste des missions
+{
+  'type': 'mission_list',
+  'data': [
+    {
+      'mission': {
+        'id': int, // ID de la mission
+        'date': string,
+        'title': string, // nom de la mission
+        'trajectory': [ // liste des points d'observation
+          {
+            'lat': float, // latitude
+            'lon': float, // longitude
+            'alt': float, // altitude
+            'photo': bool // prendre une photo ? true: oui; false: non
+          }
+        ]
+      },
+      
+      'status': string // "en cours" ou "terminée"
+    }
+  ]
+}

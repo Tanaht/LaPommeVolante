@@ -47,3 +47,25 @@
     'image': string // image encodée en base64
   }
 }
+
+/*********************************************
+ * Messages du serveur vers le drone (copier coller de android-server)
+ *********************************************/
+
+// Ordre de mission
+// POST /mission/order
+{
+  'type': 'mission_order',
+  'data': {
+    // PAS D'ID !!!!!!!!!1!!!
+    'title': string, // titre de la mission
+    'trajectory': [ // liste des points d'observation
+      {
+        'lat': float, // latitude
+        'lon': float, // longitude
+        'alt': float, // altitude
+        'photo': bool // prendre une photo ? true: oui; false: non
+      }
+    ]
+  }
+}

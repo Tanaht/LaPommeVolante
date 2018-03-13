@@ -1,6 +1,7 @@
 package ila.fr.dronemissions;
 
 import android.Manifest;
+import android.app.FragmentManager;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -11,15 +12,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.GoogleMap;
+
 public class NewMissionActivity extends AppCompatActivity implements LocationListener {
 
     private static final int PERMISSIONS_ID = 5290;
     private LocationManager lm;
 
+    private MapFragment mapFragment;
+    private GoogleMap googleMap;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_mission);
+
+        FragmentManager fragmentManager = getFragmentManager();
+        mapFragment = (MapFragment) fragmentManager.findFragmentById(R.id.map);
     }
 
     @Override
@@ -66,6 +75,12 @@ public class NewMissionActivity extends AppCompatActivity implements LocationLis
         if (lm != null) {
             lm.removeUpdates(this);
         }
+
+    }
+
+    private void loadMap(){
+        //TODO
+        //48'
 
     }
 
