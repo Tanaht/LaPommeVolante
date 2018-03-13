@@ -1,4 +1,5 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var app = express();
 var net = require('net');
 var mongoose = require('mongoose');
@@ -11,6 +12,9 @@ var Tasks = require("./api/models/mongoModel.js");
 var pomDAPIController = require('./api/controllers/pomdAPIController.js');
 
 var routes = require('./api/routes/restApiRoutes'); //importing route
+
+app.use(bodyParser.json());
+
 routes(app); //register the route
 
 mongoose.Promise = global.Promise;
