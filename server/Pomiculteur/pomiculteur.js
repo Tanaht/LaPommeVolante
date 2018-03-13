@@ -6,7 +6,8 @@ var mongoose = require('mongoose');
 var portApiRest = 8080;
 var portSocket = 5000;
 
-var Tasks = require("./api/models/todoListModel.js");
+var Tasks = require("./api/models/crModel.js");
+
 var pomDAPIController = require('./api/controllers/PomdAPIController.js');
 
 var routes = require('./api/routes/todoListRoutes'); //importing route
