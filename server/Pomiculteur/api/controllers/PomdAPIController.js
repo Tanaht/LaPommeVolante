@@ -12,6 +12,8 @@ exports.onClientConnected = function(socketClient) {
 exports.onClientSendData = function (socketClient, data) {
     console.info("new data from client : " + data);
     socketClient.write("ok " + data);
+
+
 };
 
 exports.onClientDisconnected = function (socketClient) {
