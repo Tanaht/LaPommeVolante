@@ -34,7 +34,7 @@ while True:
 
 
             # START du drone
-            connection_string = 'udpin:' + config.drone_host + ':' + config.drone_port
+            connection_string = "udpin:{}:{}" .format(config.drone_host , config.drone_port)
             sitl = None
 
             # Start SITL if no connection string specified
