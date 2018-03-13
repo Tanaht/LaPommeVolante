@@ -6,3 +6,5 @@ server/Pomiculteur/\.idea/
 
 
 \.idea/
+
+*.pyc

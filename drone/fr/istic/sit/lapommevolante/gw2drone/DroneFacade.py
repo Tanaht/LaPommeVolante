@@ -1,7 +1,7 @@
-from fr.istic.sit.lapommevolante.util import Subject
+from fr.istic.sit.lapommevolante.util.Subject import Subject
 
 
 class DroneFacade(Subject):
     def __init__(self):  # constructor
-        # Stub
+        Subject.__init__(self)
         pass

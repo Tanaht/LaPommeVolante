@@ -14,7 +14,7 @@ class Subject:
         :param observer:
         :return: void
         """
-        if not isinstance(Observer, observer):
+        if not isinstance(observer, Observer.Observer):
             raise InstanciationException(observer, Observer)
 
         self.observers.append(observer)
@@ -42,6 +42,6 @@ class Subject:
         :param observer:
         :return: void
         """
-        if not isinstance(Observer, observer):
+        if not isinstance(observer, Observer.Observer):
             raise InstanciationException(observer, Observer)
         observer.update(self)
