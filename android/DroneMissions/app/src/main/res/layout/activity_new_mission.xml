@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <!--tools:context="ila.fr.dronemissions.NewMissionActivity"-->
+    android:layout_height="match_parent"
+    tools:context="ila.fr.dronemissions.NewMissionActivity">
 
     <!--   <fragment
         android:id="@+id/fragment"
@@ -13,85 +13,127 @@
         android:layout_height="match_parent"/>
         -->
 
-    <fragment
-        android:id="@+id/list"
-        android:name="ila.fr.dronemissions.MapFragment"
-        android:layout_width="400dp"
-        android:layout_height="500dp"
-        android:layout_marginBottom="88dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="784dp"
+        android:layout_height="121dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/btn_Envoyer"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/lbl_MissionName"
+            android:layout_width="240dp"
+            android:layout_height="68dp"
+            android:layout_weight="1"
+            android:text="@string/lbl_MissionName"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:visibility="visible"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="66dp"
+            tools:layout_editor_absoluteY="42dp" />
+
+        <EditText
+            android:id="@+id/edt_MissionName"
+            android:layout_width="280dp"
+            android:layout_height="67dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="@string/entrez_un_nom_de_mission"
+            android:inputType="textPersonName"
+            android:textSize="24sp"
+            tools:ignore="HardcodedText,MissingConstraints"
+            tools:layout_editor_absoluteX="409dp"
+            tools:layout_editor_absoluteY="51dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="800dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="24dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.151"
-        app:layout_constraintStart_toStartOf="parent"></fragment>
+        app:layout_constraintLeft_toLeftOf="parent">
 
-    <TextView
-        android:id="@+id/lbl_MissionName"
-        android:layout_width="240dp"
-        android:layout_height="68dp"
-        android:text="@string/lbl_MissionName"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        android:visibility="visible"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="76dp"
-        tools:layout_editor_absoluteY="383dp" />
+        <Button
+            android:id="@+id/btn_Envoyer"
+            android:layout_width="wrap_content"
+            android:layout_height="102dp"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:text="@string/btn_Envoyer"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="601dp"
+            tools:layout_editor_absoluteY="671dp" />
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/edt_MissionName"
-        android:layout_width="280dp"
-        android:layout_height="67dp"
-        android:ems="10"
-        android:hint="Entrez un nom de mission"
-        android:inputType="textPersonName"
-        android:textSize="24sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="381dp"
-        tools:layout_editor_absoluteY="58dp" />
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="784dp"
+        android:layout_height="820dp"
+        android:layout_marginBottom="24dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        tools:layout_editor_absoluteX="8dp"
+        tools:ignore="MissingConstraints">
 
-    <Button
-        android:id="@+id/btn_Trajet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_green_light"
-        android:text="@string/btn_Trajet"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="639dp"
-        tools:layout_editor_absoluteY="212dp" />
+        <LinearLayout
+            android:layout_width="464dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_Photo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_blue_dark"
-        android:text="@string/btn_Photo"
-        app:layout_constraintBottom_toTopOf="@+id/btn_Supprimer"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Trajet"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="610dp" />
+            <fragment
+                android:id="@+id/list"
+                android:name="ila.fr.dronemissions.MapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="224dp"> </fragment>
+        </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_Supprimer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorError"
-        android:text="@string/btn_Supprimer"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Photo"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="540dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_Envoyer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
-        android:backgroundTint="@android:color/holo_blue_dark"
-        android:text="@string/btn_Envoyer"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="206dp" />
+            <Button
+                android:id="@+id/btn_Supprimer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorError"
+                android:text="@string/btn_Supprimer"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="556dp"
+                tools:layout_editor_absoluteY="400dp" />
+
+            <Button
+                android:id="@+id/btn_Photo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/holo_blue_dark"
+                android:text="@string/btn_Photo"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="618dp"
+                tools:layout_editor_absoluteY="282dp" />
+
+            <Button
+                android:id="@+id/btn_Trajet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/holo_green_light"
+                android:text="@string/btn_Trajet"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="610dp"
+                tools:layout_editor_absoluteY="495dp" />
+        </LinearLayout>
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
