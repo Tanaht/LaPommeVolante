@@ -12,15 +12,13 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
+import ila.fr.dronemissions.DAO.Mission;
 
 
 /**
@@ -54,18 +52,19 @@ public class CommunicationServerHelper {
         myRequestQueue = Volley.newRequestQueue(context);
     }
 
-    public void throwMissionOrder(){
-        Map<String, String> params = new HashMap<>();
-        params.put("type", "mission");
-        params.put("data", "");
-        executeRequestPost(this.URL_MISSION_ORDER, params);
+    public void throwMissionOrder(Mission mission){
+        try {
+            JSONObject params = new JSONObject();
+            params.put(JsonToolBox.JSON_TYPE, "mission_order");
+            params.put(JsonToolBox.JSON_DATA, JsonToolBox.toJson(mission));
+            executeRequestPost(this.URL_MISSION_ORDER, params);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public void getReport(int id) {
-        Map<String, String> params = new HashMap<>();
-        params.put("type", "report");
-        params.put("data", "");
-        executeRequestPost(this.URL_REPORT + Integer.toString(id), params);
+        executeRequestGet(this.URL_REPORT + Integer.toString(id));
     }
 
     public void getOperationsHistory(){
@@ -76,17 +75,12 @@ public class CommunicationServerHelper {
     }
 
     public void getMissionsInfo(){
-        Map<String, String> params = new HashMap<>();
-        params.put("type", "history");
-        params.put("data", "");
-        executeRequestPost(this.URL_MISSION_LIST, params);
+        executeRequestGet(this.URL_MISSION_LIST);
     }
 
-    public void executeRequestPost(String requestUrl, Map<String, String> params){
-        JSONObject jsonObj = new JSONObject(params);
-
+    public void executeRequestPost(String requestUrl, JSONObject params){
         String url = "http://"+requestUrl;
-        JsonObjectRequest myJsonRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
+        JsonObjectRequest myJsonRequest = new JsonObjectRequest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 extractResponse(response);
@@ -101,12 +95,12 @@ public class CommunicationServerHelper {
         myRequestQueue.add(myJsonRequest);
     }
 
-    public void executeRequestGet(String requestUrl, Map<String, String> params){
+    public void executeRequestGet(String requestUrl){
         String url = "http://";
-        JsonObjectRequest myJsonRequest = new JsonObjectRequest(Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest myJsonRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-
+                //define action
             }
         }, new Response.ErrorListener() {
             @Override
@@ -117,39 +111,41 @@ public class CommunicationServerHelper {
     }
 
     public void extractResponse(JSONObject jsonObject){
-        try {
-            String strType = jsonObject.getString("type");
-            String strData = jsonObject.getString("data");
+        if(jsonObject.length() != 0) {
+            try {
+                String strType = jsonObject.getString("type");
+                String strData = jsonObject.getString("data");
 
-            JSONObject data = new JSONObject(strData);
-            JSONArray array = new JSONArray(data);
-            switch (strType) {
-                case "mission":
-                    //-> no data in result
-                    break;
-                case "report":
-                    for(int i = 0; i<array.length(); i++) {
-                        JSONObject report = new JSONObject(array.getString(i));
-                        //create a new report
-                    }
-                    break;
-                case "gethistory":
-                    for(int i = 0; i<array.length(); i++) {
-                        JSONObject mission = new JSONObject(array.getString(i));
-                        //create a new mission
-                    }
-                    break;
-                case "history":
-                    for(int i = 0; i<array.length(); i++) {
-                        JSONObject mission = new JSONObject(array.getString(i));
-                        //get information
-                    }
-                    break;
-                default:
-                    break;
+                JSONObject data = new JSONObject(strData);
+                JSONArray array = new JSONArray(data);
+                switch (strType) {
+                    case "mission":
+                        //-> no data in result
+                        break;
+                    case "report":
+                        for (int i = 0; i < array.length(); i++) {
+                            JSONObject report = new JSONObject(array.getString(i));
+                            //create a new report
+                        }
+                        break;
+                    case "gethistory":
+                        for (int i = 0; i < array.length(); i++) {
+                            JSONObject mission = new JSONObject(array.getString(i));
+                            //create a new mission
+                        }
+                        break;
+                    case "history":
+                        for (int i = 0; i < array.length(); i++) {
+                            JSONObject mission = new JSONObject(array.getString(i));
+                            //get information
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
     }
 }
