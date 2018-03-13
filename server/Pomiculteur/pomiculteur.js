@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 var portApiRest = 8080;
 var portSocket = 5000;
 
-var Tasks = require("./api/models/crModel.js");
+var Tasks = require("./api/models/mongoModel.js");
 
 var pomDAPIController = require('./api/controllers/pomdAPIController.js');
 
@@ -27,8 +27,6 @@ net.createServer(function (socket) {
     });
 
 }).listen(portSocket);
-
-
 
 app.use(function(req, res) {
     res.status(404).send({url: req.originalUrl + ' not found'})
