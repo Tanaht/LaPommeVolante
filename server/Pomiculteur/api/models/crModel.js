@@ -2,7 +2,14 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var TaskSchema = new Schema({});
+var TaskSchema = new Schema({
+mission:       { type: int },
+id:       { type: int },
+status:       { type: Boolean },
+erreur:       { type: Boolean },
+status:       { type: String },
+photos : [{ lat:Float, long:Float, alt:Float, url:String}]
+});
 
 /*
 var TaskSchema = new Schema({
