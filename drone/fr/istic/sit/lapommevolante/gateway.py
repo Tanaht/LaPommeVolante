@@ -4,7 +4,6 @@ from __future__ import print_function
 import socket
 from fr.istic.sit.lapommevolante.config.Config import Config
 
-
 from dronekit import connect, VehicleMode, LocationGlobalRelative, LocationGlobal, Command
 import time
 import math
