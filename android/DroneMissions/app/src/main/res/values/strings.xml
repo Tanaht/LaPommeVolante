@@ -8,6 +8,8 @@
     <string name="lbl_MissionName">Nom de Mission</string>
     <string name="btn_Trajet">Trajet</string>
     <string name="btn_Photo">Photo</string>
-    <string name="btn_Supprimer" >Supprimer le dernier point</string>
+    <string name="btn_Supprimer">Supprimer le dernier point</string>
     <string name="btn_Envoyer">Evoyer le trajet</string>
+    <string name="title_activity_old_mission">OldMissionActivity</string>
+    <string name="lbl_NomMission">Nom de la mission</string>
 </resources>
