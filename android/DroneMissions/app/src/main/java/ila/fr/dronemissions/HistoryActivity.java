@@ -33,8 +33,8 @@ public class HistoryActivity extends AppCompatActivity {
         setTitle("Missions History");
 
         // TODO : replace this with a call to Missions API service
-        /*ms = new ArrayList<Mission>();
-        Point p1 = new Point(12345.12345, 123456.123456, false);
+        ms = new ArrayList<Mission>();
+        Point p1 = new Point(12345.12345,12345.12345, 123456.123456, false);
         List<Point> points = new ArrayList<Point>();
         points.add(p1);points.add(p1);points.add(p1);
         Mission m1 = new Mission("Mission Miss-Pomme Bretagne 2018","en cours", points);
@@ -42,7 +42,7 @@ public class HistoryActivity extends AppCompatActivity {
         Mission m3 = new Mission("Mission Pomme Canada","en cours", points);
         Mission m4 = new Mission("Mission My Lovely Pomme","terminée", points);
         Mission m5 = new Mission("Mission Last Pomme on Earth","en cours", points);
-        ms.add(m1);ms.add(m2);ms.add(m3);ms.add(m4);ms.add(m5);*/
+        ms.add(m1);ms.add(m2);ms.add(m3);ms.add(m4);ms.add(m5);
 
 
         listView = (ListView) findViewById(R.id.listView);
