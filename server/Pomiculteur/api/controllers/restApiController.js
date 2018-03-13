@@ -1,8 +1,9 @@
 'use strict';
 
 var mongoose = require('mongoose');
-    //Task = mongoose.model('Tasks');
-//var pomDAPIController = require('./api/controllers/pomdAPIController.js');
+var TaskMission = mongoose.model('MissionTask');
+var TaskCR = mongoose.model('CRTask');
+var pomDAPIController = require('./pomdAPIController.js');
 
 exports.report = function(req, res) {
     console.log(req.params.param);

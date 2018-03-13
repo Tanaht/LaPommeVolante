@@ -1,7 +1,8 @@
 'use strict';
 
 var mongoose = require('mongoose');
-//var Task = mongoose.model('Tasks');
+var TaskMission = mongoose.model('MissionTask');
+var TaskCR = mongoose.model('CRTask');
 exports.socketPomdAPI = null;
 
 
