@@ -10,3 +10,31 @@ Au premier lancement, `npm` aura besoin d'installer les dépendances du projet. 
 $ npm install
 $ npm start
 ```
+
+# Membres du projet
+
+### Partie Android
+
+- Guillaume Brossault
+- Abdel Merzouk
+- Amine Soumiaa
+- Christophe Zbirka
+
+### Partie drône
+
+- Antoine Charpentier
+- Cédric Delourme
+- Nadia Zerrouk
+
+### Partie serveur
+
+- Loïc Beaulieu
+- Jordan Maheu
+
+### Partie base de donnée
+
+- Alan Marzin
+
+### Intégration
+
+- Kévin Le Bon

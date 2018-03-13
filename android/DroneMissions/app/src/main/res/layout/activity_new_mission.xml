@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
     <!--tools:context="ila.fr.dronemissions.NewMissionActivity"-->
 
- <!--   <fragment
+    <!--   <fragment
         android:id="@+id/fragment"
         android:name="ila.fr.dronemissions.MapFragment"
         android:layout_width="match_parent"
@@ -18,12 +18,80 @@
         android:name="ila.fr.dronemissions.MapFragment"
         android:layout_width="400dp"
         android:layout_height="500dp"
+        android:layout_marginBottom="88dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="50dp"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/btn_Envoyer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></fragment>
+        app:layout_constraintHorizontal_bias="0.151"
+        app:layout_constraintStart_toStartOf="parent"></fragment>
+
+    <TextView
+        android:id="@+id/lbl_MissionName"
+        android:layout_width="240dp"
+        android:layout_height="68dp"
+        android:text="@string/lbl_MissionName"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:visibility="visible"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="76dp"
+        tools:layout_editor_absoluteY="383dp" />
+
+    <EditText
+        android:id="@+id/edt_MissionName"
+        android:layout_width="280dp"
+        android:layout_height="67dp"
+        android:ems="10"
+        android:hint="Entrez un nom de mission"
+        android:inputType="textPersonName"
+        android:textSize="24sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="381dp"
+        tools:layout_editor_absoluteY="58dp" />
+
+    <Button
+        android:id="@+id/btn_Trajet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_green_light"
+        android:text="@string/btn_Trajet"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="639dp"
+        tools:layout_editor_absoluteY="212dp" />
+
+    <Button
+        android:id="@+id/btn_Photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_dark"
+        android:text="@string/btn_Photo"
+        app:layout_constraintBottom_toTopOf="@+id/btn_Supprimer"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Trajet"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="610dp" />
+
+    <Button
+        android:id="@+id/btn_Supprimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorError"
+        android:text="@string/btn_Supprimer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Photo"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="540dp" />
+
+    <Button
+        android:id="@+id/btn_Envoyer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:backgroundTint="@android:color/holo_blue_dark"
+        android:text="@string/btn_Envoyer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="206dp" />
 
 </android.support.constraint.ConstraintLayout>
