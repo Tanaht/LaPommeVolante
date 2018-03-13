@@ -1,5 +1,7 @@
 config:
     connection:
-          socket:
-              host: 127.0.0.1
-              port: 15555
+        socket:
+            host: 127.0.0.1
+            port: 15555
+    missions:
+        max_in_queue: 1

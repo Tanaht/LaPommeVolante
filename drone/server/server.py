@@ -1,6 +1,8 @@
 import socket
 import logging
 
+import time
+
 socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 socket.bind(('localhost', 15555))
 socket.listen(1)
@@ -26,4 +28,7 @@ conn.send("""{
 
 logging.info('Gateway connected')
 
+time.sleep(10)
 socket.close()
+
+logging.info('server closed')
