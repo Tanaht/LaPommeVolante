@@ -5,4 +5,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="lbl_MissionName">Nom de Mission</string>
+    <string name="btn_Trajet">Trajet</string>
+    <string name="btn_Photo">Photo</string>
+    <string name="btn_Supprimer" >Supprimer le dernier point</string>
+    <string name="btn_Envoyer">Evoyer le trajet</string>
 </resources>
