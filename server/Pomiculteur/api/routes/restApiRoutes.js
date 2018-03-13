@@ -3,9 +3,13 @@ module.exports = function(app) {
     var todoList = require('../controllers/restApiController');
 
     // todoList Routes
-    app.route('/test')
-        .get(todoList.test);
+    app.route('/report')
+        .get(todoList.report);
 
-    app.route('/test/:param')
-        .get(todoList.testParam);
+    app.route('/mission_list')
+        .get(todoList.mission_list);
+
+    app.route('/mission/order')
+        .post(todoList.mission_order);
+
 };
