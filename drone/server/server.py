@@ -2,7 +2,7 @@ import socket
 import logging
 
 socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-socket.bind(('localhost', 15556))
+socket.bind(('localhost', 15555))
 socket.listen(1)
 
 logging.basicConfig(level=logging.INFO)

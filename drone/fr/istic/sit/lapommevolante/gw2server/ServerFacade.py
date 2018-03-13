@@ -1,6 +1,7 @@
 import json
 import socket
 import threading
+from Queue import Queue
 from argparse import Namespace
 from pprint import pprint
 
@@ -14,6 +15,7 @@ class ServerFacade(Observer):
         Observer.__init__(self)
         # TODO: choose type of socket with integration guy
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.missionsQueue = Queue(1)
 
     def __del__(self):
         if not self.sock is None:
@@ -37,5 +39,6 @@ class ServerFacade(Observer):
         :return:
         """
         jsonMission = json.loads(self.sock.recv(4096), object_hook=lambda d: Namespace(**d))
-        pprint(jsonMission)
-        logging.info('%s %s %s', jsonMission.type, jsonMission.data.title, jsonMission.data.trajectory[0].lat)
+        logging.info('Mission added to queue: [type: %s title: %s with %s points]', jsonMission.type, jsonMission.data.title, len(jsonMission.data.trajectory))
+        self.missionsQueue.put(jsonMission)
+        threading.notify()
