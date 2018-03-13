@@ -8,13 +8,13 @@ var portSocket = 5000;
 
 var Tasks = require("./api/models/crModel.js");
 
-var pomDAPIController = require('./api/controllers/PomdAPIController.js');
+var pomDAPIController = require('./api/controllers/pomdAPIController.js');
 
-var routes = require('./api/routes/todoListRoutes'); //importing route
+var routes = require('./api/routes/restApiRoutes'); //importing route
 routes(app); //register the route
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/LePommier');
+mongoose.connect('mongodb://0.0.0.0:27017/');
 
 net.createServer(function (socket) {
     pomDAPIController.onClientConnected(socket);
