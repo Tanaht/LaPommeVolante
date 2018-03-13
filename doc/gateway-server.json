@@ -1,0 +1,71 @@
+/*
+ * Messages à deux champs :
+ *  - 'type' : le type de message, symbolise la requête/réponse envoyée
+ *  - 'data' : le contenu du message
+ */
+
+/*********************************************
+ * Messages de la passerelle vers le serveur
+ *********************************************/
+
+// Mission terminée
+{
+  'type': 'mission_finished',
+  'data': {
+    'mission': int, // ID de la mission
+    'status': bool, // true = succès, false = échec
+    'error': string // message d'erreur
+  }
+}
+
+// Status du drone
+{
+  'type': 'drone_status',
+  'data': {
+    'position': {
+      'lat': float // latitude
+      'lon': float // longitude
+      'alt': float // altitude
+    },
+    
+    'battery': float // pourcentage de batterie restant
+  }
+}
+
+// Upload d'une photo vers le serveur
+{
+  'type': 'photo',
+  'data': {
+    'position': {
+      'lat': float // latitude
+      'lon': float // longitude
+      'alt': float // altitude
+    },
+    
+    'mission': int, // ID de la mission
+    'date': string, // date à laquelle la photo a été prise
+    'image': string // image encodée en base64
+  }
+}
+
+/*********************************************
+ * Messages du serveur vers le drone (copier coller de android-server)
+ *********************************************/
+
+// Ordre de mission
+// POST /mission/order
+{
+  'type': 'mission_order',
+  'data': {
+    // PAS D'ID !!!!!!!!!1!!!
+    'title': string, // titre de la mission
+    'trajectory': [ // liste des points d'observation
+      {
+        'lat': float, // latitude
+        'lon': float, // longitude
+        'alt': float, // altitude
+        'photo': bool // prendre une photo ? true: oui; false: non
+      }
+    ]
+  }
+}
