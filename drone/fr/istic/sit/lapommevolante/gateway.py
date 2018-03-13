@@ -2,13 +2,14 @@
 # coding: utf-8
 from __future__ import print_function
 import socket
-from fr.istic.sit.lapommevolante.config.Config import Config
+from config.Config import Config
 
 from dronekit import connect, VehicleMode, LocationGlobalRelative, LocationGlobal, Command
 import time
 import math
 import json
 from pymavlink import mavutil
+import os
 
 config = Config()
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
