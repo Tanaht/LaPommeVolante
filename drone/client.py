@@ -21,12 +21,12 @@ while True:
       'data': {
         'title': "highway to hell",
         'trajectory': [
-            {'lat': 48.1148383, 'lon': -1.6388297, 'alt': 10, 'photo': False},
-            {'lat': 48.1153379, 'lon': -1.6391757, 'alt': 10, 'photo': False},
-            {'lat': 48.1161849, 'lon': -1.6390014, 'alt': 10, 'photo': False},
-            {'lat': 48.1164571, 'lon': -1.6373706, 'alt': 10, 'photo': False},
-            {'lat': 48.1155689, 'lon': -1.6360724, 'alt': 10, 'photo': False},
-            {'lat': 48.1152322, 'lon': -1.6378534, 'alt': 10, 'photo': False}]
+            {'lat': 48.1148383, 'lon': -1.6388297, 'alt': 30, 'photo': False},
+            {'lat': 48.1153379, 'lon': -1.6391757, 'alt': 30, 'photo': False},
+            {'lat': 48.1161849, 'lon': -1.6390014, 'alt': 30, 'photo': False},
+            {'lat': 48.1164571, 'lon': -1.6373706, 'alt': 30, 'photo': False},
+            {'lat': 48.1155689, 'lon': -1.6360724, 'alt': 30, 'photo': False},
+            {'lat': 48.1152322, 'lon': -1.6378534, 'alt': 30, 'photo': False}]
       }
     }
     client.sendall((json.dumps(json_data)).encode())

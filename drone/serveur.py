@@ -20,6 +20,7 @@ client.connect((config.socket_host, config.socket_port))
 while True:
 
     response = client.recv(4096)
+
     if response != "":
         trame = json.loads(response.decode())
         mission = trame['type']
@@ -224,8 +225,8 @@ while True:
                 from math import cos, sin, pi, sqrt
                 import random
 
-                kml_template = '''<?xml version="1.0" encoding="UTF-8"?>
-                <kml xmlns="http://www.opengis.net/kml/2.2">
+                kml_template = '''<kml xmlns="http://www.opengis.net/kml/2.2"
+                xmlns:gx="http://www.google.com/kml/ext/2.2">
                   <Document>
                     <name>Test camera KML</name>
                     <open>1</open>
@@ -246,30 +247,8 @@ while True:
                          'heading': 160.0 + 80,
                          'tilt': 70.0}
 
-                r = 6400.0e3;  # Approximate mean earth radius
-                speed = 25.0;  # m/s
-                Te = 0.05;  # s
-
-                dt = Te
-                now = time.time()
-
-                while True:
-                    coord['heading'] += random.gauss(0.5 * dt, sqrt(dt) * 0.1)
-
-                    vx = speed * cos((-coord['heading'] + 90.0) * pi / 180.0)
-                    vy = speed * sin((-coord['heading'] + 90.0) * pi / 180.0)
-
-                    coord['latitude'] += dt * 180.0 / pi * vy / r
-                    coord['longitude'] += dt * 180.0 / pi * vx / (r * cos(coord['latitude'] * pi / 180.0))
-
-                    with open("camera_tmp.kml", "w") as kml_file:
-                        kml_file.write(kml_template.format(**coord))
-
-                    time.sleep(Te)
-
-                    last_time = now
-                    now = time.time()
-                    dt = now - last_time
+                with open("camera_tmp.kml", "w") as kml_file:
+                    kml_file.write(kml_template.format(**coord))
 
 
             print('Create a new mission (for current location)')
@@ -298,7 +277,9 @@ while True:
                 lat = vehicle.location.global_frame.lat
                 lon = vehicle.location.global_frame.lon
                 alt = vehicle.location.global_frame.alt
-#                    data = "%f,%f,%f" % (lat, lon, alt)
+#
+                updateKmlFile(lon, alt, lat)
+
                 json_data = json.dumps({
                     'type': 'drone_status',
                     'data': {
