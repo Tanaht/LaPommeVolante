@@ -15,7 +15,7 @@ exports.mission_list = function(req, res) {
 };
 
 exports.mission_order = function(req, res) {
-    console.log(req);
+    console.log(req.body);
     res.send("mission_order "+req.params.param);
 };
 
