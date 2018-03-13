@@ -2,4 +2,4 @@ config:
     connection:
           socket:
               host: 127.0.0.1
-              port: 15556
+              port: 15555

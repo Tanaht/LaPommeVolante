@@ -2,16 +2,21 @@
 # coding: utf-8
 from __future__ import print_function
 import socket
+from fr.istic.sit.lapommevolante.config.Config import Config
 
 
 from dronekit import connect, VehicleMode, LocationGlobalRelative, LocationGlobal, Command
 import time
 import math
+import json
 from pymavlink import mavutil
 
-
+config = Config()
 socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-socket.bind(('', 15556))
+
+print('Start socket server %s: %s' % (config.socket_host, config.socket_port))
+
+socket.bind((config.socket_host, config.socket_port))
 liste = []
 
 while True:
@@ -20,14 +25,21 @@ while True:
     print("{} connected".format(address))
 
     while True:
-        response = client.recv(255)
+
+        response = client.recv(4096)
         if response != "":
-            print(response)
-            if response == "RESET":
-                # RESET
-                liste = []
-            elif response == "START":
-                # START
+            trame = json.loads(response.decode())
+            mission = trame['type']
+            title = trame['data']['title']
+
+            if mission == "mission_order":
+                # decode des points
+                elt = trame['data']['trajectory'];
+                for point in elt:
+                   liste.append(LocationGlobal(point['lat'], point['lon'], point['alt']))
+
+
+                # START du drone
                 connection_string = 'udpin:0.0.0.0:14551'
                 sitl = None
 
@@ -239,11 +251,18 @@ while True:
                     lat = vehicle.location.global_frame.lat
                     lon = vehicle.location.global_frame.lon
                     alt = vehicle.location.global_frame.alt
-                    data = "%f,%f,%f" % (lat, lon, alt)
-                    client.send(data.encode())
+    #                    data = "%f,%f,%f" % (lat, lon, alt)
+                    json_data = json.dumps({
+                        'type': 'drone_status',
+                        'data': {
+                            'position': dict(lat=lat, lon=lon, alt=alt),
+                            'battery': 12
+                        }
+                    })
+                    client.send(json_data.encode()) # send data via socket
 
-                    if nextwaypoint == vehicle.commands.count:  # Dummy waypoint - as soon as we reach waypoint 4 this is true and we exit.
-                        print("Exit 'standard' mission when start heading to final waypoint (5)",vehicle.commands.count)
+                    if nextwaypoint == vehicle.commands.count:
+                        print("Exit 'standard' mission when start heading to final waypoint : ",vehicle.commands.count)
                         break;
                     time.sleep(1)
 
@@ -254,24 +273,16 @@ while True:
                 print("Close vehicle object")
                 vehicle.close()
 
-                client.send("STOP".encode())
+                json_data = json.dumps({
+                    'type': 'mission_finished',
+                    'data': {'mission': 10, 'status': True, 'error': ""}
+                })
+                client.send(json_data.encode())
 
                 # Shut down simulator if it was started.
                 if sitl is not None:
                     sitl.stop()
-            elif response == "EXIT":
-                print("Fin du client.")
+
                 break;
-            else:
-                # 48.1148383, -1.6388297, 10
-                elt = response.split(',');
-                if len(elt) == 3:
-                    param = []
-                    for str in elt:
-                        param.append(float(str))
-
-                    liste.append(LocationGlobal(param[0],param[1],param[2]))
-
     client.close()
-stock.close()
-
+socket.close()
