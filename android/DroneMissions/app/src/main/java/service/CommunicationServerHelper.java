@@ -18,7 +18,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
+
 import ila.fr.dronemissions.DAO.Mission;
+import ila.fr.dronemissions.DAO.Report;
 
 
 /**
@@ -41,6 +44,8 @@ public class CommunicationServerHelper {
      *  -> use executeRequest with these params to get the result
      *  -> use extract response to get needed information
      */
+
+    public final static String SERVER_URL = "192.168.137.45";
 
     public final static String URL_MISSION_ORDER = "mission/order";
     public final static String URL_MISSION_LIST = "mission/list";
@@ -79,7 +84,8 @@ public class CommunicationServerHelper {
     }
 
     public void executeRequestPost(String requestUrl, JSONObject params){
-        String url = "http://"+requestUrl;
+        String url = "http://"+SERVER_URL+":8080/"+requestUrl;
+        System.out.println("Send : " + params.toString());
         JsonObjectRequest myJsonRequest = new JsonObjectRequest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -96,11 +102,11 @@ public class CommunicationServerHelper {
     }
 
     public void executeRequestGet(String requestUrl){
-        String url = "http://";
-        JsonObjectRequest myJsonRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        String url = "http://"+SERVER_URL+":8080/"+requestUrl;
+        JsonObjectRequest myJsonRequest = new JsonObjectRequest(Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                //define action
+                extractResponse(response);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -111,34 +117,21 @@ public class CommunicationServerHelper {
     }
 
     public void extractResponse(JSONObject jsonObject){
+        System.out.println(jsonObject.toString());
         if(jsonObject.length() != 0) {
             try {
                 String strType = jsonObject.getString("type");
-                String strData = jsonObject.getString("data");
-
-                JSONObject data = new JSONObject(strData);
-                JSONArray array = new JSONArray(data);
                 switch (strType) {
                     case "mission":
                         //-> no data in result
                         break;
                     case "report":
-                        for (int i = 0; i < array.length(); i++) {
-                            JSONObject report = new JSONObject(array.getString(i));
-                            //create a new report
-                        }
+                        Report report = JsonToolBox.getReportFromJSON(jsonObject);
                         break;
                     case "gethistory":
-                        for (int i = 0; i < array.length(); i++) {
-                            JSONObject mission = new JSONObject(array.getString(i));
-                            //create a new mission
-                        }
                         break;
                     case "history":
-                        for (int i = 0; i < array.length(); i++) {
-                            JSONObject mission = new JSONObject(array.getString(i));
-                            //get information
-                        }
+                        List<Mission> missions = JsonToolBox.getListMissionFromJson(jsonObject);
                         break;
                     default:
                         break;
