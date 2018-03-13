@@ -1,8 +1,8 @@
 'use strict';
 
-var mongoose = require('mongoose')
-var Task = mongoose.model('Tasks');
-var socketPomdAPI = null;
+var mongoose = require('mongoose');
+//var Task = mongoose.model('Tasks');
+exports.socketPomdAPI = null;
 
 
 var sample = {
@@ -22,15 +22,12 @@ var sample = {
 
 exports.onClientConnected = function(socketClient) {
     console.info("new client connected to the socket");
-    socketPomdAPI = socketClient;
+    exports.socketPomdAPI = socketClient;
     socketClient.write(JSON.stringify(sample));
-
 };
 
 exports.onClientSendData = function (socketClient, data) {
     console.info("new data from client : " + data);
-
-
 };
 
 exports.onClientDisconnected = function (socketClient) {

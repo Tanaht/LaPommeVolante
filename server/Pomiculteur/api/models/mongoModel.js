@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var app = express();
@@ -36,6 +36,7 @@ cr.save(function(error) { //This saves the information
   }
 });
 
+
 app.get('/save/:query', cors(), function(req, res) {
 	var query = req.params.query;
 
@@ -49,8 +50,9 @@ app.get('/save/:query', cors(), function(req, res) {
 			res.json(result)
 		}
 	})
-})
+});
 
 module.exports.app = app;
 module.exports.cr = cr;
 module.exports.mission = mission;
+*/
