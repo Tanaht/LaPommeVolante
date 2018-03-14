@@ -7,11 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import ila.fr.dronemissions.DAO.Mission;
-import ila.fr.dronemissions.DAO.Point;
 import service.CommunicationServerHelper;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,16 +28,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent( MainActivity.this,
                         NewMissionActivity.class);
                 startActivity(intent);
-//                List<Point> points = new ArrayList<>();
-//                Point p1 = new Point(-1.6388297,48.1148383,  10, false);
-//                Point p2 = new Point(-1.6391757,48.1153379,  10, false);
-//                Point p3 = new Point(-1.6390014,48.1161849, 10, false);
-//                points.add(p1);
-//                points.add(p2);
-//                points.add(p3);
-//                Mission mission = new Mission("highway to hell", "true", points);
-//                CommunicationServerHelper csh = new CommunicationServerHelper(getApplicationContext());
-//                csh.throwMissionOrder(mission);
             }
         });
 

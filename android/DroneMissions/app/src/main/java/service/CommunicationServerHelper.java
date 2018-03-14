@@ -48,7 +48,7 @@ public class CommunicationServerHelper {
     public final static String SERVER_URL = "192.168.137.45";
 
     public final static String URL_MISSION_ORDER = "mission/order";
-    public final static String URL_MISSION_LIST = "mission/list";
+    public final static String URL_MISSION_LIST = "mission_list";
     public final static String URL_REPORT = "report/";
 
     RequestQueue myRequestQueue;
@@ -103,7 +103,7 @@ public class CommunicationServerHelper {
 
     public void executeRequestGet(String requestUrl){
         String url = "http://"+SERVER_URL+":8080/"+requestUrl;
-        JsonObjectRequest myJsonRequest = new JsonObjectRequest(Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest myJsonRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 extractResponse(response);
@@ -114,6 +114,8 @@ public class CommunicationServerHelper {
                 //set action on error response
             }
         });
+
+        myRequestQueue.add(myJsonRequest);
     }
 
     public void extractResponse(JSONObject jsonObject){

@@ -21,6 +21,7 @@ import java.util.Map;
 
 import ila.fr.dronemissions.DAO.Mission;
 import ila.fr.dronemissions.DAO.Point;
+import service.CommunicationServerHelper;
 
 public class HistoryActivity extends AppCompatActivity {
 
@@ -32,7 +33,11 @@ public class HistoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_history);
         setTitle("Missions History");
 
-        // TODO : replace this with a call to Missions API service
+        CommunicationServerHelper csh = new CommunicationServerHelper(getApplicationContext());
+        // TODO : return the mission list
+        csh.getMissionsInfo();
+        Toast.makeText(getApplicationContext(), "Mission list got from server", Toast.LENGTH_SHORT).show();
+
         ms = new ArrayList<Mission>();
         Point p1 = new Point(12345.12345,12345.12345, 123456.123456, false);
         List<Point> points = new ArrayList<Point>();
@@ -43,7 +48,6 @@ public class HistoryActivity extends AppCompatActivity {
         Mission m4 = new Mission("Mission My Lovely Pomme","terminée", points);
         Mission m5 = new Mission("Mission Last Pomme on Earth","en cours", points);
         ms.add(m1);ms.add(m2);ms.add(m3);ms.add(m4);ms.add(m5);
-
 
         listView = (ListView) findViewById(R.id.listView);
         //android.R.layout.simple_list_item_2 est une vue disponible de base dans le SDK android,
@@ -56,6 +60,10 @@ public class HistoryActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
+                CommunicationServerHelper csh = new CommunicationServerHelper(getApplicationContext());
+                csh.getReport(1);
+                Toast.makeText(getApplicationContext(), "Report got from server", Toast.LENGTH_SHORT).show();
+
                 Intent intent = new Intent( HistoryActivity.this,
                         MissionReportActivity.class);
                 intent.putExtra("MISSION", (Mission) ms.get(position));

@@ -2,6 +2,7 @@ package ila.fr.dronemissions;
 
 import android.Manifest;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -11,12 +12,22 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import ila.fr.dronemissions.DAO.Mission;
+import ila.fr.dronemissions.DAO.Point;
+import service.CommunicationServerHelper;
+
 public class NewMissionActivity extends AppCompatActivity implements LocationListener {
 
+    private Button btn_NewMission;
     private static final int PERMISSIONS_ID = 5290;
     private LocationManager lm;
 
@@ -30,6 +41,31 @@ public class NewMissionActivity extends AppCompatActivity implements LocationLis
 
         FragmentManager fragmentManager = getFragmentManager();
         mapFragment = (MapFragment) fragmentManager.findFragmentById(R.id.map);
+
+        btn_NewMission = (Button) findViewById(R.id.btn_Envoyer);
+
+        btn_NewMission.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                List<Point> points = new ArrayList<>();
+                Point p1 = new Point(-1.6388297,48.1148383,  30, false);
+                Point p2 = new Point(-1.6391757,48.1153379,  30, false);
+                Point p3 = new Point(-1.6390014,48.1161849, 30, false);
+                Point p4 = new Point(-1.6373706,48.1164571, 30, false);
+                Point p5 = new Point(-1.6360724,48.1155689, 30, false);
+                Point p6 = new Point(-1.6378534,48.1152322, 30, false);
+                points.add(p1);
+                points.add(p2);
+                points.add(p3);
+                points.add(p4);
+                points.add(p5);
+                points.add(p6);
+                Mission mission = new Mission("highway to hell", "true", points);
+                CommunicationServerHelper csh = new CommunicationServerHelper(getApplicationContext());
+                csh.throwMissionOrder(mission);
+                Toast.makeText(getApplicationContext(), "Mission successfully sent to server", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
