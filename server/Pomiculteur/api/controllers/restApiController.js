@@ -66,12 +66,13 @@ var list =
     };
 
 exports.report = function(req, res) {
-    console.log(req.body);
+    
+    console.log("report request from android");
     res.send(report);
 };
 
 exports.mission_list = function(req, res) {
-    console.log(req.body);
+    console.log("mission_list request from android");
     res.send(list);
 };
 

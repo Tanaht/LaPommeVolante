@@ -29,13 +29,13 @@ id : crId,
 erreur: crErreur,
 status: crStatus,
 photos : crPhotos
-})
+});
 
 crvar.save(function(err) {
   if (err) throw err;
   console.log('CR saved successfully!');
 })
-}
+};
 
 mission.save = function (missionTitre, missionId, missionDate, missionStatus, missionTrajectory){
 
@@ -45,13 +45,13 @@ id : missionId,
 date: missionDate,
 status: missionStatus,
 trajectory : missionTrajectory
-})
+});
 
 missionvar.save(function(err) {
   if (err) throw err;
   console.log('CR saved successfully!');
 })
-}
+};
 
 module.exports.cr = cr;
 module.exports.mission = mission;

@@ -3,7 +3,7 @@ module.exports = function(app) {
     var todoList = require('../controllers/restApiController');
 
     // todoList Routes
-    app.route('/report')
+    app.route('/report/:id')
         .get(todoList.report);
 
     app.route('/mission_list')
