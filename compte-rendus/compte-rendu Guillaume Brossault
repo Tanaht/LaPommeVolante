@@ -1,0 +1,13 @@
+Compte-rendu - Guillaume Brossault
+
+Groupe Android
+
+Dans la construction de l'application LaPommeVolante, j'ai réalisé la partie permettant la communication entre l'interface Android et le serveur. 
+
+Pour mettre en place les échanges entre ces deux entités, j'ai choisi d'utiliser la librairie Volley. Celle-ci permet de faciliter la communication entre une application Android et un serveur et d'en améliorer les performances. Suite à la définition du format et du contenu des échanges, j'ai pu créer des outils permettant d'envoyer des requêtes au serveur et de recevoir correctement les réponses. Le format et le contenu des requêtes ayant été défnis par le groupe "intégration", ce travail s'est décomposé en plusieurs étapes :
+	- la création d'une RequestQueue, propre à Volley.
+	- la préparation d'un objet JSON à envoyer pour les requêtes de type POST.
+	- l'envoie de la requête, construite notamment avec la méthode "JSONRequest" de la librairie Volley permettant de créer une requête en indiquant l'url, son type, son contenu, et les actions à réaliser à la réception de réponses ou en cas d'erreur.
+	- la transformation de l'objet JSON récupéré en réponse en objet Android.
+
+En mettant en place ces échanges entre le client Android et le serveur, j'ai donc découvert la librairie Volley qui m'a permis de construire efficacement des requêtes HTTP à envoyer au serveur, et de définir le travail à réaliser lors de la réception des réponses.
