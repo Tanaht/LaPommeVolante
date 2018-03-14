@@ -1,0 +1,18 @@
+Compte rendu projet de pilotage de drone:
+
+Le projet drone, dans un premier temps, à pour objectif de permettre à un utilisateur de définir un point de départ, un point 
+d'arrivée ainsi que des points d'observations afin de prendre des photos de ces points
+
+Dans le projet, je faisais partie de la sous équipe drone 
+
+Comme conseillé, nous avons utilisé le SDK dronekit permettant le développement d'applications pour la manipulation de drones.
+Dronekit offre la possibilité de développer en python, même si aucun de nous ne programmait en python, notre choix s'est porté 
+dessus quant au développement de notre passerelle 
+
+Le projet m'a permis de prendre en main dronekit qui est effectivement trés utile pour aréhender la manipulation de drone 
+programatiquement
+
+Aprés installation du simulateur de véhicule/dronekit-SITL, de MAVProxy (la station au sol basé sur le protocole de communication
+MAVLink) et de l'APM Planner pour voir le déplacement du drone sur une carte, je me suis basée sur les exemples fournis pour 
+essayer de simuler le déplacement d'un drone, ceci m'a permis d'appréhender la programmation python, j'ai aussi de mon côté 
+cherché les commandes MAVLink permettant de prendre des photos avec une GoPro, ce que je n'ai pas pu tester à ce stade du projet.
